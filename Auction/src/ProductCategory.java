@@ -2,7 +2,8 @@
 
 public enum ProductCategory {
 
-    technique(1), antiques(2), electronics(3), other(4);
+
+    TECHNIQUE(1), ANTIQUES(2), ELECTRONICS(3), OTHER(4);
 
     private final int id;
 

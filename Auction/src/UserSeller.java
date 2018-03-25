@@ -1,7 +1,7 @@
 import java.util.UUID;
 
 public class UserSeller {
-    private final String id = UUID.randomUUID().toString();
+
     private final String name;
     private final Account account;
 
@@ -11,14 +11,22 @@ public class UserSeller {
         this.account = account;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public long getRemainingMoney() {
         return account.getMoney();
+    }
+
+    public Account getAccount() {
+        return account;
     }
 
     @Override
     public String toString() {
         return "UserSeller{" +
-                "id='" + id + '\'' +
+
                 ", name='" + name + '\'' +
                 '}';
     }

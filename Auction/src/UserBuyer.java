@@ -3,7 +3,7 @@
 import java.util.UUID;
 
 public class UserBuyer {
-    private final String id = UUID.randomUUID().toString();
+
     private final String name;
     private final Account account;
 
@@ -17,10 +17,14 @@ public class UserBuyer {
         return account.getMoney();
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
     @Override
     public String toString() {
         return "UserBuyer{" +
-                "id='" + id + '\'' +
+
                 ", name='" + name + '\'' +
                 '}';
     }

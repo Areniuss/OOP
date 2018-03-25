@@ -1,7 +1,9 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class Account {
+    private final String id = UUID.randomUUID().toString();
     private final long money;
     private final LocalDateTime dateRegistration;
 
@@ -21,6 +23,10 @@ public class Account {
 
 
         return dateRegistration;
+    }
+
+    public String getId() {
+        return id;
     }
 
     @Override

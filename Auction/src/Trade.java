@@ -40,6 +40,11 @@ public class Trade {
     public Lot getLot() {
         return lot;
     }
+
+    public List<Rate> getRatesHistory() {
+        return ratesHistory;
+    }
+
     public List<Rate> addRate(Rate rate){
         checkTimeOut();
         this.rate = rate;
