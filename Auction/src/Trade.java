@@ -13,13 +13,14 @@ public class Trade {
    private final Lot lot;
    private final List<Rate> ratesHistory = new ArrayList<>();
 
-
-    public Trade( Lot lot, Rate rate, LocalDateTime startTime, LocalDateTime endTime) {
+    private Trade trade1;
+    public Trade(Lot lot, Rate rate, LocalDateTime startTime, LocalDateTime endTime) {
 
         this.rate = rate;
         this.startTime = startTime;
         this.endTime = endTime;
         this.lot=lot;
+
     }
 
     public String getId() {
@@ -58,13 +59,30 @@ public class Trade {
         return true;
     }
     public UserBuyer checkWinner (){
-       int winn = ratesHistory.lastIndexOf(ratesHistory);
+
+       int winn = ratesHistory.size()-1;
        Rate Winner = ratesHistory.get(winn);
       UserBuyer Winnerr = Winner.getUserBuyer();
        return Winnerr;
 
     }
+public void withdraw(){
 
+//       if(trade.checkTimeOut()){
+
+    int winn = ratesHistory.size()-1;
+    Rate Winner = ratesHistory.get(winn);
+    UserBuyer Winnerr = Winner.getUserBuyer();
+           Winnerr.getAccount().setMoney(Winnerr.getAccount().getMoney()-getRate().getCurrentPrice());
+
+    int lotnum = ratesHistory.size()-1;
+    Rate WinnerLot = ratesHistory.get(winn);
+
+           UserSeller lucky = WinnerLot.getLot().getUserSeller();
+           lucky.getAccount().setMoney(lucky.getAccount().getMoney()+getRate().getCurrentPrice());
+
+//       }
+}
     @Override
     public String toString() {
         return "Trade{" +
