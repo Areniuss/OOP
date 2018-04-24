@@ -1,13 +1,18 @@
 
 
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
+
 
 public class Lots {
 
     private final List<Lot> lots = new ArrayList<>();
+
+    public void sort(Comparator<Lot> comparator) {
+        lots.sort(comparator);
+    }
 
     public void addLot(Lot lot) {
         lots.add(lot);
@@ -21,69 +26,72 @@ public class Lots {
         String test = Productname.toUpperCase();
         List<Lot> result = new ArrayList<>();
         for (Lot lot : lots) {
-            Lot test1 = lot;
-            String testname = test1.getName().toUpperCase();
+            String testname = lot.getName().toUpperCase();
             if (testname.contains(test)) {
                 result.add(lot);
             }
 
         }
-        if(result.isEmpty()){
-            throw new IllegalArgumentException("no lots found :( ");//TODO нужна ли эта проверка?
-        }
+
 
         return result;
     }
+
     public List<Lot> search(ProductCategory category) {
-        ProductCategory test = category;
         List<Lot> result = new ArrayList<>();
         for (Lot lot : lots) {
-            Lot test1 = lot;
-            ProductCategory testname = test1.getCategory();
-            if (testname.equals(test)) {
+            ProductCategory testname = lot.getCategory();
+            if (testname.equals(category)) {
                 result.add(lot);
             }
 
         }
-        if(result.isEmpty()){
-            throw new IllegalArgumentException("no lots found :( ");//TODO нужна ли эта проверка?
-        }
+
 
         return result;
     }
-    public List<Lot> search(long start, long end) { //TODO правильна ли реализация этого метода или что то можно добавить?
+
+    public List<Lot> search(long start, long end) { //
 
         List<Lot> result = new ArrayList<>();
         for (Lot lot : lots) {
 
 
-            if (lot.getStartingPrice()>=start && lot.getStartingPrice()<=end) {
+            if (lot.getStartingPrice() >= start && lot.getStartingPrice() <= end) {
                 result.add(lot);
             }
 
         }
-        if(result.isEmpty()){
-            throw new IllegalArgumentException("no lots found :( ");//TODO нужна ли эта проверка?
-        }
+
 
         return result;
     }
+
     public List<Lot> search(String Username) {
         String test = Username.toUpperCase();
         List<Lot> result = new ArrayList<>();
         for (Lot lot : lots) {
-            Lot test1 = lot;
-            String testname = test1.getUserSeller().getName().toUpperCase();
+            String testname = lot.getUserSeller().getName().toUpperCase();
             if (testname.contains(test)) {
                 result.add(lot);
             }
 
         }
-        if(result.isEmpty()){
-            throw new IllegalArgumentException("no user sellers found :( ");//TODO нужна ли эта проверка?
-        }
 
         return result;
+    }
+
+    public Lots filter(Predicate<Lot> predicate) {
+        Lots test = new Lots();
+        for (Lot t : lots
+                ) {
+            if (predicate.test(t)) {
+                test.addLot(t);
+            }
+
+
+        }
+        return test;
     }
 
     @Override

@@ -3,18 +3,18 @@ import java.util.UUID;
 public class Lot {
     private final String id = UUID.randomUUID().toString();
     private final String name;
-    private final  ProductCategory category;
+    private final ProductCategory category;
     private final long startingPrice;
     /*private final long currentPrice;*/
     private final String description;
     private final UserSeller userSeller;
 
-    public Lot( UserSeller userSeller, String name, ProductCategory category, long startingPrice /*long currentPrice*/, String description) {
+    public Lot(UserSeller userSeller, String name, ProductCategory category, long startingPrice /*long currentPrice*/, String description) {
 
         this.name = name;
         this.category = category;
         this.startingPrice = startingPrice;
-       /* this.currentPrice = currentPrice;*/
+        /* this.currentPrice = currentPrice;*/
         this.description = description;
         this.userSeller = userSeller;
     }

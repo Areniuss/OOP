@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class Account {
     private final String id = UUID.randomUUID().toString();
-    private  long money;
+    private long money;
     private final LocalDateTime dateRegistration;
 
     public Account(long money, LocalDateTime dateRegistration) {

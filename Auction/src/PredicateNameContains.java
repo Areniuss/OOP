@@ -8,6 +8,6 @@ public class PredicateNameContains implements Predicate<Lot> {
 
     @Override
     public boolean test(Lot lot) {
-        return  lot.getName().contains(substring);
+        return lot.getName().contains(substring);
     }
 }
